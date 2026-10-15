@@ -10,6 +10,8 @@ servers:
 tags:
   - name: health
     description: Health operations
+  - name: leads
+    description: Website enquiries and checklist requests
 paths:
   /healthz:
     get:
@@ -24,6 +26,36 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+  /leads:
+    post:
+      operationId: createLead
+      tags: [leads]
+      summary: Submit a quote enquiry or request the free cleaning checklist
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LeadInput"
+      responses:
+        "201":
+          description: Lead received
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LeadCreated"
+        "400":
+          description: Invalid lead details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Lead could not be saved
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
 components:
   schemas:
     HealthStatus:
@@ -33,4 +65,55 @@ components:
           type: string
       required:
         - status
+    LeadInput:
+      type: object
+      required:
+        - leadType
+        - fullName
+        - email
+      properties:
+        leadType:
+          type: string
+          enum: [quote, checklist]
+        fullName:
+          type: string
+          minLength: 2
+          maxLength: 120
+        email:
+          type: string
+          format: email
+          maxLength: 320
+        phone:
+          type: string
+          maxLength: 40
+        serviceAddress:
+          type: string
+          maxLength: 500
+    LeadCreated:
+      type: object
+      required:
+        - id
+        - leadType
+        - submittedAt
+        - notificationSent
+        - checklistUrl
+      properties:
+        id:
+          type: string
+        leadType:
+          type: string
+          enum: [quote, checklist]
+        submittedAt:
+          type: string
+          format: date-time
+        notificationSent:
+          type: boolean
+        checklistUrl:
+          type: ["string", "null"]
+    Error:
+      type: object
+      required: [error]
+      properties:
+        error:
+          type: string
 

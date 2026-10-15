@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
 @import 'tailwindcss';
 @import 'tw-animate-css';
 @plugin "@tailwindcss/typography";
@@ -78,70 +79,70 @@
   --elevate-1: rgba(0, 0, 0, 0.03);
   --elevate-2: rgba(0, 0, 0, 0.08);
 
-  --background: red; /*replace with H S L */
+  --background: 42 45% 96%;
 
-  --foreground: red; /*replace with H S L */
+  --foreground: 195 39% 18%;
 
-  --border: red; /*replace with H S L */
+  --border: 40 22% 85%;
 
-  --card: red; /*replace with H S L */
+  --card: 42 45% 98%;
 
-  --card-foreground: red; /*replace with H S L */
+  --card-foreground: 195 39% 18%;
 
-  --card-border: red; /*replace with H S L */
+  --card-border: 40 22% 85%;
 
-  --sidebar: red; /*replace with H S L */
+  --sidebar: 42 45% 96%;
 
-  --sidebar-foreground: red; /*replace with H S L */
+  --sidebar-foreground: 195 39% 18%;
 
-  --sidebar-border: red; /*replace with H S L */
+  --sidebar-border: 40 22% 85%;
 
-  --sidebar-primary: red; /*replace with H S L */
+  --sidebar-primary: 177 38% 32%;
 
-  --sidebar-primary-foreground: red; /*replace with H S L */
+  --sidebar-primary-foreground: 42 45% 96%;
 
-  --sidebar-accent: red; /*replace with H S L */
+  --sidebar-accent: 174 31% 90%;
 
-  --sidebar-accent-foreground: red; /*replace with H S L */
+  --sidebar-accent-foreground: 195 39% 18%;
 
-  --sidebar-ring: red; /*replace with H S L */
+  --sidebar-ring: 177 38% 32%;
 
-  --popover: red; /*replace with H S L */
+  --popover: 42 45% 98%;
 
-  --popover-foreground: red; /*replace with H S L */
+  --popover-foreground: 195 39% 18%;
 
-  --popover-border: red; /*replace with H S L */
+  --popover-border: 40 22% 85%;
 
-  --primary: red; /*replace with H S L */
+  --primary: 177 38% 32%;
 
-  --primary-foreground: red; /*replace with H S L */
+  --primary-foreground: 42 45% 98%;
 
-  --secondary: red; /*replace with H S L */
+  --secondary: 174 31% 90%;
 
-  --secondary-foreground: red; /*replace with H S L */
+  --secondary-foreground: 195 39% 18%;
 
-  --muted: red; /*replace with H S L */
+  --muted: 38 28% 91%;
 
-  --muted-foreground: red; /*replace with H S L */
+  --muted-foreground: 195 18% 43%;
 
-  --accent: red; /*replace with H S L */
+  --accent: 18 56% 63%;
 
-  --accent-foreground: red; /*replace with H S L */
+  --accent-foreground: 195 39% 18%;
 
-  --destructive: red; /*replace with H S L */
+  --destructive: 2 62% 49%;
 
-  --destructive-foreground: red; /*replace with H S L */
+  --destructive-foreground: 42 45% 98%;
 
-  --input: red; /*replace with H S L */
-  --ring: red; /*replace with H S L */
-  --chart-1: red; /*replace with H S L */
-  --chart-2: red; /*replace with H S L */
-  --chart-3: red; /*replace with H S L */
-  --chart-4: red; /*replace with H S L */
-  --chart-5: red; /*replace with H S L */
+  --input: 40 22% 85%;
+  --ring: 177 38% 32%;
+  --chart-1: 177 38% 32%;
+  --chart-2: 18 56% 63%;
+  --chart-3: 195 39% 18%;
+  --chart-4: 42 45% 72%;
+  --chart-5: 174 31% 70%;
 
-  --app-font-sans: 'Inter', sans-serif;
-  --app-font-serif: Georgia, serif;
+  --app-font-sans: 'DM Sans', sans-serif;
+  --app-font-serif: 'Playfair Display', serif;
   --app-font-mono: Menlo, monospace;
   --radius: 0.5rem; /* 8px */
   --shadow-2xs: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0); /*replace with H S L */
@@ -227,68 +228,68 @@
   --elevate-1: rgba(255, 255, 255, 0.04);
   --elevate-2: rgba(255, 255, 255, 0.09);
 
-  --background: red; /*replace with H S L */
+  --background: 195 39% 12%;
 
-  --foreground: red; /*replace with H S L */
+  --foreground: 42 45% 96%;
 
-  --border: red; /*replace with H S L */
+  --border: 195 20% 28%;
 
-  --card: red; /*replace with H S L */
+  --card: 195 35% 16%;
 
-  --card-foreground: red; /*replace with H S L */
+  --card-foreground: 42 45% 96%;
 
-  --card-border: red; /*replace with H S L */
+  --card-border: 195 20% 28%;
 
-  --sidebar: red; /*replace with H S L */
+  --sidebar: 195 39% 12%;
 
-  --sidebar-foreground: red; /*replace with H S L */
+  --sidebar-foreground: 42 45% 96%;
 
-  --sidebar-border: red; /*replace with H S L */
+  --sidebar-border: 195 20% 28%;
 
-  --sidebar-primary: red; /*replace with H S L */
+  --sidebar-primary: 177 38% 45%;
 
-  --sidebar-primary-foreground: red; /*replace with H S L */
+  --sidebar-primary-foreground: 195 39% 12%;
 
-  --sidebar-accent: red; /*replace with H S L */
+  --sidebar-accent: 195 28% 23%;
 
-  --sidebar-accent-foreground: red; /*replace with H S L */
+  --sidebar-accent-foreground: 42 45% 96%;
 
-  --sidebar-ring: red; /*replace with H S L */
+  --sidebar-ring: 177 38% 45%;
 
-  --popover: red; /*replace with H S L */
+  --popover: 195 35% 16%;
 
-  --popover-foreground: red; /*replace with H S L */
+  --popover-foreground: 42 45% 96%;
 
-  --popover-border: red; /*replace with H S L */
+  --popover-border: 195 20% 28%;
 
-  --primary: red; /*replace with H S L */
+  --primary: 177 38% 45%;
 
-  --primary-foreground: red; /*replace with H S L */
+  --primary-foreground: 195 39% 12%;
 
-  --secondary: red; /*replace with H S L */
+  --secondary: 195 28% 23%;
 
-  --secondary-foreground: red; /*replace with H S L */
+  --secondary-foreground: 42 45% 96%;
 
-  --muted: red; /*replace with H S L */
+  --muted: 195 28% 23%;
 
-  --muted-foreground: red; /*replace with H S L */
+  --muted-foreground: 42 18% 70%;
 
-  --accent: red; /*replace with H S L */
+  --accent: 18 56% 63%;
 
-  --accent-foreground: red; /*replace with H S L */
+  --accent-foreground: 195 39% 12%;
 
-  --destructive: red; /*replace with H S L */
+  --destructive: 2 62% 55%;
 
-  --destructive-foreground: red; /*replace with H S L */
+  --destructive-foreground: 42 45% 96%;
 
   /* Used as the border around inputs. Dark mode: Should be a border that is light enough to have high contrast when rendered on a --card background. More contrast than standard --border */
-  --input: red; /*replace with H S L */
-  --ring: red; /*replace with H S L */
-  --chart-1: red; /*replace with H S L */
-  --chart-2: red; /*replace with H S L */
-  --chart-3: red; /*replace with H S L */
-  --chart-4: red; /*replace with H S L */
-  --chart-5: red; /*replace with H S L */
+  --input: 195 20% 28%;
+  --ring: 177 38% 45%;
+  --chart-1: 177 38% 45%;
+  --chart-2: 18 56% 63%;
+  --chart-3: 42 45% 72%;
+  --chart-4: 174 31% 70%;
+  --chart-5: 195 18% 55%;
 
   --shadow-2xs: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0);
   --shadow-xs: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0);
@@ -430,4 +431,177 @@
   .border.hover-elevate:not(.no-hover-interaction-elevate)::after {
     inset: -1px;
   }
+}
+
+:root {
+  --ink: #193b43;
+  --sea: #2d706f;
+  --foam: #e8f0e9;
+  --sand: #f5f1e8;
+  --coral: #d88b70;
+}
+
+html { scroll-behavior: smooth; }
+body { background: #f7f4ed; color: var(--ink); font-family: 'DM Sans', sans-serif; }
+::selection { background: #c8dfd7; color: #193b43; }
+.serif { font-family: 'Playfair Display', Georgia, serif; }
+.site-wrap { overflow: hidden; }
+.topline { background:#193b43; color:#f7f4ed; font-size:11px; letter-spacing:.13em; text-transform:uppercase; text-align:center; padding:10px 18px; }
+.nav-shell { height:82px; display:flex; align-items:center; justify-content:space-between; max-width:1240px; margin:auto; padding:0 32px; }
+.brand { display:flex; align-items:center; gap:12px; color:var(--ink); text-decoration:none; }
+.brand-mark { width:39px;height:39px;border:1px solid #8cacaa;border-radius:50%;display:grid;place-items:center;color:var(--sea); }
+.brand-name { font-family:'Playfair Display',serif; font-size:20px; line-height:1.05; letter-spacing:-.03em; }
+.brand-name small { display:block;font:600 9px 'DM Sans',sans-serif;letter-spacing:.19em;text-transform:uppercase;color:#66807e;margin-top:5px; }
+.nav-links { display:flex; align-items:center; gap:34px; }
+.nav-links a { color:#385b60;text-decoration:none;font-size:13px;font-weight:600;transition:color .2s; }
+.nav-links a:hover {color:#d17d62}
+.nav-cta,.button-primary { display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;border-radius:999px;background:#2e706f;color:#fffaf0;padding:14px 22px;text-decoration:none;font-size:13px;font-weight:700;transition:transform .2s,background .2s;cursor:pointer; }
+.nav-cta:hover,.button-primary:hover { transform:translateY(-2px);background:#245d5d; }
+.hero { background:#dce8e2; position:relative; min-height:620px; }
+.hero:after {content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(220,232,226,.98) 0%,rgba(220,232,226,.9) 40%,rgba(220,232,226,.18) 76%,rgba(220,232,226,.05) 100%);}
+.hero-image {position:absolute;inset:0 0 0 37%;background-image:linear-gradient(180deg,rgba(25,59,67,.02),rgba(25,59,67,.10)),url('/coastal-home.jpg');background-size:cover;background-position:center 53%;}
+.hero-inner {position:relative;z-index:1;max-width:1240px;margin:auto;padding:106px 32px 92px;min-height:620px;display:flex;align-items:center}
+.hero-copy {max-width:570px;animation:rise .7s both}
+.eyebrow {display:flex;align-items:center;gap:11px;color:#397071;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.eyebrow:before {content:"";width:28px;height:1px;background:#d88b70}
+.hero h1 {font:500 clamp(49px,6.3vw,82px)/.99 'Playfair Display',serif;letter-spacing:-.045em;color:#193b43;margin:23px 0 22px}
+.hero h1 em {font-weight:500;color:#397071}
+.hero-copy p {font-size:16px;line-height:1.8;color:#456267;max-width:420px;margin:0 0 29px}
+.hero-actions {display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.text-link {color:#284f53;text-decoration:none;font-size:13px;font-weight:700;display:inline-flex;align-items:center;gap:8px}
+.hero-note {margin-top:36px;padding-top:20px;border-top:1px solid rgba(25,59,67,.18);font-size:12px;color:#587274;display:flex;gap:9px;align-items:center}
+.trust-strip {display:flex;justify-content:center;gap:clamp(18px,5vw,72px);align-items:center;background:#f7f4ed;padding:28px 24px;color:#436267;flex-wrap:wrap}
+.trust-item {display:flex;align-items:center;gap:10px;font-size:12px;font-weight:600}
+.trust-item svg {color:#4d8983}
+.section {padding:112px 32px}
+.section-inner {max-width:1120px;margin:auto}
+.section-kicker {font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#b86e57;margin-bottom:17px}
+.section-title {font:500 clamp(37px,4.2vw,57px)/1.08 'Playfair Display',serif;letter-spacing:-.04em;color:#193b43;margin:0}
+.section-intro {max-width:520px;font-size:15px;line-height:1.8;color:#607879;margin-top:18px}
+.services {background:#f1ede3}
+.services-head {display:flex;justify-content:space-between;align-items:end;gap:36px;margin-bottom:56px}
+.services-head .section-intro {margin-bottom:4px}
+.service-grid {display:grid;grid-template-columns:1.15fr .85fr .85fr;gap:17px}
+.service-card {background:#fbf9f3;min-height:252px;padding:30px;position:relative;display:flex;flex-direction:column;justify-content:space-between;border:1px solid #e4dfd2;transition:transform .25s}
+.service-card:first-child {background:#dce8e2;min-height:285px}
+.service-card:hover {transform:translateY(-4px)}
+.service-number {font:500 13px 'DM Sans',sans-serif;letter-spacing:.12em;color:#78918e}
+.service-card h3 {font:500 28px/1.1 'Playfair Display',serif;margin:0 0 12px;color:#193b43}
+.service-card p {font-size:13px;line-height:1.7;color:#617778;max-width:290px;margin:0}
+.service-icon {position:absolute;right:27px;top:28px;color:#4c8180}
+.process {display:grid;grid-template-columns:.9fr 1.1fr;gap:90px;align-items:center}
+.process-aside {background:#1d444a;color:#f5f1e8;padding:46px;min-height:396px;position:relative;overflow:hidden}
+.process-aside:after {content:"";position:absolute;width:280px;height:280px;border:1px solid rgba(232,240,233,.18);border-radius:50%;right:-98px;bottom:-90px;box-shadow:0 0 0 24px rgba(232,240,233,.04),0 0 0 48px rgba(232,240,233,.03)}
+.process-aside .section-kicker {color:#e3a78e}
+.process-aside h2 {font:500 39px/1.1 'Playfair Display',serif;max-width:320px;margin:18px 0}
+.process-aside p {font-size:14px;line-height:1.8;color:#c1d1cb;max-width:350px}
+.process-list {display:flex;flex-direction:column}
+.process-step {display:grid;grid-template-columns:50px 1fr;gap:17px;padding:23px 0;border-bottom:1px solid #e5e0d5}
+.process-step:first-child {border-top:1px solid #e5e0d5}
+.step-no {font:500 13px 'DM Sans',sans-serif;color:#c77b62;padding-top:4px}
+.process-step h3 {font:600 17px 'DM Sans',sans-serif;margin:0 0 7px;color:#24464b}
+.process-step p {font-size:13px;line-height:1.7;margin:0;color:#6d8382}
+.checklist-band {background:#dce8e2;position:relative}
+.checklist-layout {display:grid;grid-template-columns:1fr .9fr;gap:80px;align-items:center}
+.guide-cover {background:#f8f5eb;padding:40px;max-width:390px;box-shadow:15px 17px 0 #b9ccc2;transform:rotate(2deg);margin:5px auto 12px;min-height:440px;position:relative}
+.guide-cover:before {content:"";position:absolute;inset:13px;border:1px solid #d4ddd2}
+.guide-content {position:relative;z-index:1;height:100%;min-height:360px;display:flex;flex-direction:column;justify-content:space-between}
+.guide-stamp {font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#4b7e79}
+.guide-cover h3 {font:500 38px/.99 'Playfair Display',serif;letter-spacing:-.04em;margin:35px 0 15px;color:#1d4248}
+.guide-cover p {font-size:12px;line-height:1.7;max-width:210px;color:#71817b}
+.guide-lines {display:grid;gap:12px;margin-top:24px}
+.guide-line {border-top:1px solid #d9dfd4;padding-top:9px;font-size:10px;color:#66807a}
+.guide-signup {background:#f8f5eb;padding:38px}
+.guide-signup .section-title {font-size:42px}
+.guide-signup > p {color:#6b7f7e;font-size:14px;line-height:1.7;margin:14px 0 24px}
+.lead-form {display:grid;gap:13px}
+.form-row {display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.field {display:grid;gap:7px}
+.field label {font-size:11px;font-weight:700;color:#405e60}
+.field input,.field textarea {font:14px 'DM Sans',sans-serif;color:#193b43;border:1px solid #d8d9cf;background:#fffdf8;border-radius:2px;padding:13px 14px;outline:none;width:100%;transition:border .2s,box-shadow .2s}
+.field input:focus,.field textarea:focus {border-color:#548782;box-shadow:0 0 0 3px rgba(84,135,130,.13)}
+.field input::placeholder,.field textarea::placeholder {color:#a2aaa3}
+.form-footnote {font-size:11px;line-height:1.6;color:#7c8b85}
+.form-error {color:#ad493f;font-size:12px;margin:0}
+.form-success {background:#e5efe9;border-left:3px solid #4a8279;padding:14px;color:#28574f;font-size:13px;line-height:1.6}
+.button-primary:disabled {opacity:.65;cursor:wait;transform:none}
+.story {background:#f7f4ed}
+.story-layout {display:grid;grid-template-columns:1fr 1fr;gap:78px;align-items:center}
+.story-visual {min-height:440px;background:linear-gradient(180deg,rgba(29,68,74,.02),rgba(29,68,74,.22)),url('/coastal-home.jpg') center 61%/cover;position:relative}
+.story-visual:after {content:"A little more room to breathe.";position:absolute;left:26px;bottom:25px;color:#fff9ed;font:italic 21px 'Playfair Display',serif}
+.story-copy blockquote {font:500 23px/1.5 'Playfair Display',serif;color:#315c60;margin:28px 0}
+.story-copy p {font-size:14px;line-height:1.8;color:#68807e}
+.quote-section {background:#f1ede3}
+.quote-layout {display:grid;grid-template-columns:.8fr 1.2fr;gap:72px;align-items:start}
+.quote-side {position:sticky;top:30px}
+.quote-side .section-title {font-size:49px}
+.quote-side > p {font-size:14px;line-height:1.8;color:#647a78;margin-top:20px}
+.quote-promise {display:flex;gap:12px;margin-top:27px;padding-top:22px;border-top:1px solid #ddd8cb;color:#577371;font-size:12px;line-height:1.7}
+.quote-form-card {background:#faf8f1;padding:36px;border:1px solid #e2ddd1}
+.quote-form-card h3 {font:500 26px 'Playfair Display',serif;margin:0 0 8px;color:#193b43}
+.quote-form-card > p {font-size:13px;color:#71817b;margin:0 0 22px}
+.quote-form-card .lead-form {gap:15px}
+.quote-form-card textarea {min-height:85px;resize:vertical}
+.faq-grid {display:grid;grid-template-columns:.7fr 1.3fr;gap:70px}
+.faq-list {border-top:1px solid #dfddd3}
+.faq-item {border-bottom:1px solid #dfddd3;padding:20px 0}
+.faq-item h3 {font:600 15px 'DM Sans',sans-serif;color:#24464b;margin:0 0 9px}
+.faq-item p {font-size:13px;line-height:1.7;color:#6b8180;margin:0}
+.footer {background:#193b43;color:#eaf0e9;padding:55px 32px 25px}
+.footer-inner {max-width:1120px;margin:auto}
+.footer-top {display:flex;align-items:flex-start;justify-content:space-between;padding-bottom:40px;gap:36px}
+.footer .brand {color:#f7f4ed}
+.footer .brand-mark {color:#a6c9bb;border-color:#668985}
+.footer .brand-name small {color:#aac0b8}
+.footer-note {font:italic 20px 'Playfair Display',serif;color:#cadbd1;max-width:300px}
+.footer-bottom {border-top:1px solid rgba(234,240,233,.18);padding-top:19px;display:flex;justify-content:space-between;color:#aac0b8;font-size:11px}
+.checklist-page {background:#f1ede3;min-height:100vh}
+.checklist-hero {background:#dce8e2;padding:67px 32px}
+.checklist-hero-inner {max-width:1120px;margin:auto;display:grid;grid-template-columns:1fr .85fr;gap:70px;align-items:center}
+.checklist-hero h1 {font:500 clamp(42px,5vw,64px)/1.02 'Playfair Display',serif;letter-spacing:-.045em;margin:20px 0;color:#193b43}
+.checklist-hero p {font-size:15px;line-height:1.8;color:#557274;max-width:500px}
+.print-button {background:#193b43;color:#fff;padding:13px 19px;border-radius:999px;border:0;display:inline-flex;gap:9px;align-items:center;font:700 12px 'DM Sans',sans-serif;cursor:pointer;margin-top:14px}
+.print-sheet {background:#fffdf7;max-width:890px;margin:48px auto 80px;padding:58px 64px;box-shadow:0 18px 50px rgba(42,66,62,.08);border:1px solid #e3dfd4}
+.print-head {display:flex;justify-content:space-between;gap:20px;border-bottom:1px solid #d8ddd4;padding-bottom:24px;margin-bottom:30px}
+.print-head h2 {font:500 34px 'Playfair Display',serif;margin:7px 0;color:#193b43}
+.print-head p {font-size:12px;color:#72817a;margin:0}
+.check-columns {display:grid;grid-template-columns:1fr 1fr;gap:35px}
+.check-group {margin-bottom:30px}
+.check-group h3 {font:600 13px 'DM Sans',sans-serif;letter-spacing:.04em;color:#35716d;border-bottom:1px solid #e2e4dc;padding-bottom:10px;margin:0 0 13px}
+.check-row {display:flex;align-items:flex-start;gap:10px;margin:11px 0;font-size:12px;line-height:1.55;color:#526b68}
+.check-box {width:14px;height:14px;border:1px solid #91aaa0;flex:0 0 14px;margin-top:1px}
+.check-footer {border-top:1px solid #d8ddd4;padding-top:16px;font-size:11px;color:#75847e}
+.page-footer {text-align:center;padding:0 20px 36px;color:#75847e;font-size:12px}
+.page-footer a {color:#397071}
+@keyframes rise {from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@media (max-width:800px) {
+ .nav-shell {height:72px;padding:0 20px}.nav-links {gap:17px}.nav-links a:not(.nav-cta) {display:none}.nav-cta {padding:12px 16px;font-size:12px}
+ .hero,.hero-inner {min-height:650px}.hero-image {inset:0;background-position:58% center}.hero:after {background:linear-gradient(90deg,rgba(220,232,226,.97),rgba(220,232,226,.83) 58%,rgba(220,232,226,.5))}
+ .hero-inner {padding:85px 24px 68px}.hero-copy {max-width:530px}.hero h1 {font-size:clamp(49px,11vw,72px)}
+ .trust-strip {gap:17px 27px;padding:23px 18px}.section {padding:78px 22px}.services-head {display:block;margin-bottom:35px}.services-head .section-intro {margin-top:12px}
+ .service-grid {grid-template-columns:1fr 1fr}.service-card:first-child {grid-column:span 2}
+ .process,.checklist-layout,.story-layout,.quote-layout,.faq-grid {grid-template-columns:1fr;gap:38px}
+ .process-aside {min-height:320px}
+ .guide-cover {margin:15px auto 27px}.checklist-layout {gap:35px}
+ .story-visual {min-height:340px;order:2}.quote-side {position:static}.quote-side .section-title {font-size:43px}
+ .faq-grid {gap:30px}
+ .checklist-hero-inner {grid-template-columns:1fr;gap:25px}
+ .checklist-hero {padding:50px 22px}.print-sheet {margin:28px 16px 48px;padding:35px 28px}
+}
+@media (max-width:520px) {
+ .topline {font-size:9px;letter-spacing:.09em}.brand-name {font-size:18px}
+ .hero,.hero-inner {min-height:680px}.hero-inner {padding:76px 22px 58px}.hero-copy p {font-size:14px}
+ .hero-actions {align-items:flex-start;flex-direction:column;gap:17px}.hero-note {font-size:11px;line-height:1.5}
+ .trust-strip {justify-content:flex-start;max-width:380px;margin:auto}.trust-item {width:calc(50% - 16px);font-size:11px}
+ .section {padding:65px 20px}.section-title {font-size:39px}
+ .service-grid {grid-template-columns:1fr}.service-card:first-child {grid-column:auto}.service-card {min-height:225px}
+ .process-aside {padding:32px}.process-aside h2 {font-size:34px}
+ .guide-signup {padding:26px}.guide-signup .section-title {font-size:36px}
+ .form-row {grid-template-columns:1fr}.quote-form-card {padding:25px 20px}
+ .quote-side .section-title {font-size:39px}.footer-top {display:grid}.footer-bottom {gap:12px;flex-direction:column}
+ .print-head {display:block}.print-head > div:last-child {margin-top:16px}
+ .print-sheet {padding:28px 21px}.print-head h2 {font-size:27px}.check-columns {grid-template-columns:1fr;gap:0}
+}
+@media print {
+ body {background:#fff!important}.topline,.nav-shell,.checklist-hero,.page-footer,.footer {display:none!important}.checklist-page {background:#fff}.print-sheet {box-shadow:none;border:0;margin:0 auto;max-width:none;padding:10mm 12mm}.check-columns {grid-template-columns:1fr 1fr}.check-group {break-inside:avoid}.check-row {font-size:11px}
 }
