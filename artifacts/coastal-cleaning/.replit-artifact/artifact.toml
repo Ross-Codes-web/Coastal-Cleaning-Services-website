@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Coastal Cleaning Services"
+description = "A welcoming coastal cleaning service website with quote enquiries, a free home-cleaning checklist, and email alerts for new leads."
+version = "1.0.0"
+id = "artifacts/coastal-cleaning"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24084
+
+[services.development]
+run = "pnpm --filter @workspace/coastal-cleaning run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/coastal-cleaning", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/coastal-cleaning/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24084"
+BASE_PATH = "/"
