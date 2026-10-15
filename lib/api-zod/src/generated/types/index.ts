@@ -11,4 +11,8 @@ export * from './healthStatus';
 export * from './leadCreated';
 export * from './leadCreatedLeadType';
 export * from './leadInput';
+export * from './leadInputCleaningFrequency';
 export * from './leadInputLeadType';
+export * from './leadInputPreferredTimeWindowsItem';
+export * from './leadInputPropertySize';
+export * from './leadInputServiceType';

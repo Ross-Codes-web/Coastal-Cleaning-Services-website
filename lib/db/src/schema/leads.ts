@@ -1,6 +1,7 @@
 import { createInsertSchema } from "drizzle-zod";
 import {
   boolean,
+  date,
   pgTable,
   text,
   timestamp,
@@ -16,6 +17,12 @@ export const leadsTable = pgTable("coastal_cleaning_leads", {
   email: varchar("email", { length: 320 }).notNull(),
   phone: varchar("phone", { length: 40 }),
   serviceAddress: text("service_address"),
+  serviceType: varchar("service_type", { length: 40 }),
+  propertySize: varchar("property_size", { length: 40 }),
+  specialRequests: text("special_requests"),
+  preferredDate: date("preferred_date", { mode: "string" }),
+  preferredTimeWindows: text("preferred_time_windows").array(),
+  cleaningFrequency: varchar("cleaning_frequency", { length: 30 }),
   notificationSent: boolean("notification_sent").notNull().default(false),
   createdAt: timestamp("created_at", { withTimezone: true })
     .notNull()

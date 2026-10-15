@@ -29,6 +29,8 @@ export const createLeadBodyPhoneMax = 40;
 
 export const createLeadBodyServiceAddressMax = 500;
 
+export const createLeadBodySpecialRequestsMax = 2000;
+
 
 
 export const CreateLeadBody = zod.object({
@@ -36,7 +38,13 @@ export const CreateLeadBody = zod.object({
   "fullName": zod.string().min(createLeadBodyFullNameMin).max(createLeadBodyFullNameMax),
   "email": zod.string().email().max(createLeadBodyEmailMax),
   "phone": zod.string().max(createLeadBodyPhoneMax).optional(),
-  "serviceAddress": zod.string().max(createLeadBodyServiceAddressMax).optional()
+  "serviceAddress": zod.string().max(createLeadBodyServiceAddressMax).optional(),
+  "serviceType": zod.enum(['standard', 'deep_clean', 'move_in_out', 'commercial_office', 'other']).optional(),
+  "propertySize": zod.enum(['1_bed_1_bath', '2_bed_1_2_bath', '3_bed_3_plus_bath', '4_plus_bedrooms']).optional(),
+  "specialRequests": zod.string().max(createLeadBodySpecialRequestsMax).optional(),
+  "preferredDate": zod.coerce.date().optional(),
+  "preferredTimeWindows": zod.array(zod.enum(['morning', 'afternoon', 'flexible'])).optional(),
+  "cleaningFrequency": zod.enum(['one_time', 'weekly', 'bi_weekly', 'monthly']).optional()
 })
 
 export const CreateLeadResponse = zod.object({

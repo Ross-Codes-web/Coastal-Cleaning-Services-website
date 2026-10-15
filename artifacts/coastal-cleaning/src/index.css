@@ -518,9 +518,15 @@ body { background: #f7f4ed; color: var(--ink); font-family: 'DM Sans', sans-seri
 .form-row {display:grid;grid-template-columns:1fr 1fr;gap:13px}
 .field {display:grid;gap:7px}
 .field label {font-size:11px;font-weight:700;color:#405e60}
-.field input,.field textarea {font:14px 'DM Sans',sans-serif;color:#193b43;border:1px solid #d8d9cf;background:#fffdf8;border-radius:2px;padding:13px 14px;outline:none;width:100%;transition:border .2s,box-shadow .2s}
-.field input:focus,.field textarea:focus {border-color:#548782;box-shadow:0 0 0 3px rgba(84,135,130,.13)}
+.field input:not([type=checkbox]):not([type=radio]),.field textarea,.field select {font:14px 'DM Sans',sans-serif;color:#193b43;border:1px solid #d8d9cf;background:#fffdf8;border-radius:2px;padding:13px 14px;outline:none;width:100%;transition:border .2s,box-shadow .2s}
+.field input:not([type=checkbox]):not([type=radio]):focus,.field textarea:focus,.field select:focus {border-color:#548782;box-shadow:0 0 0 3px rgba(84,135,130,.13)}
 .field input::placeholder,.field textarea::placeholder {color:#a2aaa3}
+.form-section-label {margin-top:8px;padding-top:16px;border-top:1px solid #ded9ce;font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:#708680;font-weight:700}
+.choice-group {border:0;border-top:1px solid #e2ddd1;padding:13px 0 0;margin:0;min-width:0}
+.choice-group legend {padding:0;font-size:11px;font-weight:700;color:#405e60}
+.choice-options {display:grid;gap:9px;margin-top:10px}
+.choice-option {display:flex;align-items:flex-start;gap:9px;color:#536d68;font-size:12px;line-height:1.5;cursor:pointer}
+.choice-option input {margin:2px 0 0;accent-color:#4b8078;flex:none}
 .form-footnote {font-size:11px;line-height:1.6;color:#7c8b85}
 .form-error {color:#ad493f;font-size:12px;margin:0}
 .form-success {background:#e5efe9;border-left:3px solid #4a8279;padding:14px;color:#28574f;font-size:13px;line-height:1.6}

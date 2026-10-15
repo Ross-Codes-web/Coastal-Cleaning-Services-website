@@ -7,6 +7,30 @@ import { Router, type IRouter } from "express";
 const router: IRouter = Router();
 const CHECKLIST_URL = "/checklist";
 const DEFAULT_FROM_EMAIL = "Coastal Cleaning Services <onboarding@resend.dev>";
+const SERVICE_TYPE_LABELS: Record<string, string> = {
+  standard: "Standard cleaning (recurring or one-time)",
+  deep_clean: "Deep cleaning",
+  move_in_out: "Move-in / move-out cleaning",
+  commercial_office: "Commercial / office cleaning",
+  other: "Other",
+};
+const PROPERTY_SIZE_LABELS: Record<string, string> = {
+  "1_bed_1_bath": "1 bedroom / 1 bath",
+  "2_bed_1_2_bath": "2 bedrooms / 1–2 baths",
+  "3_bed_3_plus_bath": "3 bedrooms / 3+ baths",
+  "4_plus_bedrooms": "4+ bedrooms",
+};
+const TIME_WINDOW_LABELS: Record<string, string> = {
+  morning: "Mornings (8:00 am–12:00 pm)",
+  afternoon: "Afternoons (12:00–4:00 pm)",
+  flexible: "Flexible / first available",
+};
+const CLEANING_FREQUENCY_LABELS: Record<string, string> = {
+  one_time: "One-time only",
+  weekly: "Weekly (15% off)",
+  bi_weekly: "Bi-weekly (10% off)",
+  monthly: "Monthly (5% off)",
+};
 
 function escapeHtml(value: string): string {
   return value.replace(/[&<>"']/g, (character) => {
@@ -36,17 +60,29 @@ router.post("/leads", async (req, res): Promise<void> => {
     email: parsed.data.email.trim().toLowerCase(),
     phone: parsed.data.phone?.trim() || null,
     serviceAddress: parsed.data.serviceAddress?.trim() || null,
+    serviceType: parsed.data.serviceType ?? null,
+    propertySize: parsed.data.propertySize ?? null,
+    specialRequests: parsed.data.specialRequests?.trim() || null,
+    preferredDate: parsed.data.preferredDate
+      ? parsed.data.preferredDate.toISOString().slice(0, 10)
+      : null,
+    preferredTimeWindows: parsed.data.preferredTimeWindows ?? null,
+    cleaningFrequency: parsed.data.cleaningFrequency ?? null,
   };
 
   if (
     leadData.fullName.length < 2 ||
     (leadData.leadType === "quote" &&
-      (!leadData.phone || !leadData.serviceAddress))
+      (!leadData.phone ||
+        !leadData.serviceAddress ||
+        !leadData.serviceType ||
+        !leadData.propertySize ||
+        !leadData.specialRequests))
   ) {
     res.status(400).json({
       error:
         leadData.leadType === "quote"
-          ? "Please include your phone number and service address."
+          ? "Please include your contact details, service type, property size, and priority areas."
           : "Please enter your full name.",
     });
     return;
@@ -61,6 +97,12 @@ router.post("/leads", async (req, res): Promise<void> => {
         email: leadData.email,
         phone: leadData.phone,
         serviceAddress: leadData.serviceAddress,
+        serviceType: leadData.serviceType,
+        propertySize: leadData.propertySize,
+        specialRequests: leadData.specialRequests,
+        preferredDate: leadData.preferredDate,
+        preferredTimeWindows: leadData.preferredTimeWindows,
+        cleaningFrequency: leadData.cleaningFrequency,
       })
       .returning({
         id: leadsTable.id,
@@ -69,6 +111,12 @@ router.post("/leads", async (req, res): Promise<void> => {
         email: leadsTable.email,
         phone: leadsTable.phone,
         serviceAddress: leadsTable.serviceAddress,
+        serviceType: leadsTable.serviceType,
+        propertySize: leadsTable.propertySize,
+        specialRequests: leadsTable.specialRequests,
+        preferredDate: leadsTable.preferredDate,
+        preferredTimeWindows: leadsTable.preferredTimeWindows,
+        cleaningFrequency: leadsTable.cleaningFrequency,
         createdAt: leadsTable.createdAt,
       });
 
@@ -88,6 +136,20 @@ router.post("/leads", async (req, res): Promise<void> => {
         `Email: ${lead.email}`,
         lead.phone ? `Phone: ${lead.phone}` : null,
         lead.serviceAddress ? `Service address: ${lead.serviceAddress}` : null,
+        lead.serviceType
+          ? `Service type: ${SERVICE_TYPE_LABELS[lead.serviceType] ?? lead.serviceType}`
+          : null,
+        lead.propertySize
+          ? `Property size: ${PROPERTY_SIZE_LABELS[lead.propertySize] ?? lead.propertySize}`
+          : null,
+        lead.specialRequests ? `Priority areas / special requests: ${lead.specialRequests}` : null,
+        lead.preferredDate ? `Preferred date: ${lead.preferredDate}` : null,
+        lead.preferredTimeWindows?.length
+          ? `Preferred time window: ${lead.preferredTimeWindows.map((window) => TIME_WINDOW_LABELS[window] ?? window).join(", ")}`
+          : null,
+        lead.cleaningFrequency
+          ? `Cleaning frequency: ${CLEANING_FREQUENCY_LABELS[lead.cleaningFrequency] ?? lead.cleaningFrequency}`
+          : null,
         `Request: ${lead.leadType === "quote" ? "Quote request" : "Free cleaning checklist"}`,
         `Submitted: ${lead.createdAt.toISOString()}`,
       ]

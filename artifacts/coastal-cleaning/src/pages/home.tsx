@@ -7,13 +7,68 @@ import {
 } from 'lucide-react';
 import { SiteFooter, SiteHeader } from '@/components/site-shell';
 
-type LeadFields = { fullName: string; email: string; phone: string; serviceAddress: string };
+const SERVICE_TYPES = [
+  { value: 'standard', label: 'Standard cleaning (recurring or one-time)' },
+  { value: 'deep_clean', label: 'Deep cleaning' },
+  { value: 'move_in_out', label: 'Move-in / move-out cleaning' },
+  { value: 'commercial_office', label: 'Commercial / office cleaning' },
+  { value: 'other', label: 'Other' },
+] as const;
 
-function validate(fields: LeadFields, checklist = false) {
+const PROPERTY_SIZES = [
+  { value: '1_bed_1_bath', label: '1 bedroom / 1 bath' },
+  { value: '2_bed_1_2_bath', label: '2 bedrooms / 1–2 baths' },
+  { value: '3_bed_3_plus_bath', label: '3 bedrooms / 3+ baths' },
+  { value: '4_plus_bedrooms', label: '4+ bedrooms' },
+] as const;
+
+const TIME_WINDOWS = [
+  { value: 'morning', label: 'Mornings (8:00 am–12:00 pm)' },
+  { value: 'afternoon', label: 'Afternoons (12:00–4:00 pm)' },
+  { value: 'flexible', label: 'Flexible / first available' },
+] as const;
+
+const CLEANING_FREQUENCIES = [
+  { value: 'one_time', label: 'One-time only' },
+  { value: 'weekly', label: 'Weekly (15% off)' },
+  { value: 'bi_weekly', label: 'Bi-weekly (10% off)' },
+  { value: 'monthly', label: 'Monthly (5% off)' },
+] as const;
+
+type LeadFields = {
+  fullName: string;
+  email: string;
+  phone: string;
+  serviceAddress: string;
+  serviceType: typeof SERVICE_TYPES[number]['value'] | '';
+  propertySize: typeof PROPERTY_SIZES[number]['value'] | '';
+  specialRequests: string;
+  preferredDate: string;
+  preferredTimeWindows: Array<typeof TIME_WINDOWS[number]['value']>;
+  cleaningFrequency: typeof CLEANING_FREQUENCIES[number]['value'] | '';
+};
+
+const EMPTY_QUOTE: LeadFields = {
+  fullName: '',
+  email: '',
+  phone: '',
+  serviceAddress: '',
+  serviceType: '',
+  propertySize: '',
+  specialRequests: '',
+  preferredDate: '',
+  preferredTimeWindows: [],
+  cleaningFrequency: '',
+};
+
+function validate(fields: Partial<LeadFields> & Pick<LeadFields, 'fullName' | 'email'>, checklist = false) {
   if (fields.fullName.trim().length < 2) return 'Please enter your full name.';
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email.trim())) return 'Enter a valid email address.';
-  if (!checklist && fields.phone.replace(/\D/g, '').length < 7) return 'Enter a phone number we can reach you at.';
-  if (!checklist && fields.serviceAddress.trim().length < 5) return 'Add the address you would like cleaned.';
+  if (!checklist && (fields.phone ?? '').replace(/\D/g, '').length < 7) return 'Enter a phone number we can reach you at.';
+  if (!checklist && (fields.serviceAddress ?? '').trim().length < 5) return 'Add the address you would like cleaned.';
+  if (!checklist && !fields.serviceType) return 'Choose the type of cleaning you need.';
+  if (!checklist && !fields.propertySize) return 'Choose the size of the property.';
+  if (!checklist && !(fields.specialRequests ?? '').trim()) return 'Tell us about priority areas or special requests.';
   return '';
 }
 
@@ -46,7 +101,7 @@ function ChecklistSignup() {
         if (lead.checklistUrl) sessionStorage.setItem('coastalChecklistUrl', lead.checklistUrl);
         setLocation('/checklist');
       },
-      onError: () => setError('We couldn’t send your guide just now. Please try again in a moment.'),
+      onError: () => setError('We couldn’t save your details just now. Please try again in a moment.'),
     });
   };
   return (
@@ -57,22 +112,25 @@ function ChecklistSignup() {
         placeholder="you@example.com" autoComplete="email" onChange={(email) => setFields({ ...fields, email })} />
       {error && <p className="form-error" role="alert" data-testid="status-checklist-error">{error}</p>}
       <button className="button-primary" type="submit" disabled={createLead.isPending} data-testid="button-get-checklist">
-        {createLead.isPending ? 'Sending your guide…' : 'Send me the checklist'} <ArrowRight size={16} />
+        {createLead.isPending ? 'Preparing your guide…' : 'Get my checklist'} <ArrowRight size={16} />
       </button>
-      <span className="form-footnote">A useful guide for your home, sent straight to your inbox. No appointment required.</span>
+      <span className="form-footnote">Your printable guide opens after sign-up. No appointment required.</span>
     </form>
   );
 }
 
 function QuoteRequestForm() {
   const createLead = useCreateLead();
-  const [fields, setFields] = useState<LeadFields>({ fullName: '', email: '', phone: '', serviceAddress: '' });
+  const [fields, setFields] = useState<LeadFields>({ ...EMPTY_QUOTE });
   const [error, setError] = useState('');
   const [sent, setSent] = useState(false);
+  const [notificationSent, setNotificationSent] = useState<boolean | null>(null);
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const issue = validate(fields);
     if (issue) { setError(issue); return; }
+    const { serviceType, propertySize } = fields;
+    if (!serviceType || !propertySize) return;
     setError('');
     createLead.mutate({
       data: {
@@ -81,9 +139,18 @@ function QuoteRequestForm() {
         email: fields.email.trim(),
         phone: fields.phone.trim(),
         serviceAddress: fields.serviceAddress.trim(),
+        serviceType,
+        propertySize,
+        specialRequests: fields.specialRequests.trim(),
+        ...(fields.preferredDate ? { preferredDate: fields.preferredDate } : {}),
+        ...(fields.preferredTimeWindows.length ? { preferredTimeWindows: fields.preferredTimeWindows } : {}),
+        ...(fields.cleaningFrequency ? { cleaningFrequency: fields.cleaningFrequency } : {}),
       },
     }, {
-      onSuccess: () => setSent(true),
+      onSuccess: (lead) => {
+        setNotificationSent(lead.notificationSent);
+        setSent(true);
+      },
       onError: () => setError('Your request didn’t go through. Please check your connection and try again.'),
     });
   };
@@ -91,10 +158,12 @@ function QuoteRequestForm() {
     <div className="quote-form-card">
       {sent ? (
         <div className="form-success" role="status" data-testid="status-quote-success">
-          <strong>Thank you — your request is on its way.</strong><br />
-          This is a quote request, not a confirmed appointment. Our team will reply within 24 business hours.
+          <strong>Thank you — your request has been saved.</strong><br />
+          {notificationSent
+            ? 'This is a quote request, not a confirmed appointment. Our team will reply within 24 business hours.'
+            : 'We could not send the team an email alert. Please contact the business directly to make sure they see your request.'}
           <button type="button" className="text-link" style={{ border: 0, background: 'transparent', padding: '13px 0 0', cursor: 'pointer' }}
-            onClick={() => { setSent(false); setFields({ fullName: '', email: '', phone: '', serviceAddress: '' }); }}
+            onClick={() => { setSent(false); setNotificationSent(null); setFields({ ...EMPTY_QUOTE }); }}
             data-testid="button-send-another">Send another request <ArrowRight size={14} /></button>
         </div>
       ) : (
@@ -113,6 +182,71 @@ function QuoteRequestForm() {
             <Field name="quote-address" label="Service address" value={fields.serviceAddress}
               placeholder="Street, town, and ZIP code" autoComplete="street-address"
               onChange={(serviceAddress) => setFields({ ...fields, serviceAddress })} />
+            <div className="form-section-label">Property &amp; cleaning details</div>
+            <div className="field">
+              <label htmlFor="quote-service-type">Type of service needed *</label>
+              <select id="quote-service-type" name="serviceType" required value={fields.serviceType}
+                onChange={(event) => setFields({ ...fields, serviceType: event.target.value as LeadFields['serviceType'] })}
+                data-testid="select-service-type">
+                <option value="" disabled>Choose a service</option>
+                {SERVICE_TYPES.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}
+              </select>
+            </div>
+            <div className="field">
+              <label htmlFor="quote-property-size">Property size *</label>
+              <select id="quote-property-size" name="propertySize" required value={fields.propertySize}
+                onChange={(event) => setFields({ ...fields, propertySize: event.target.value as LeadFields['propertySize'] })}
+                data-testid="select-property-size">
+                <option value="" disabled>Choose a property size</option>
+                {PROPERTY_SIZES.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}
+              </select>
+            </div>
+            <div className="field">
+              <label htmlFor="quote-special-requests">Commercial space special request or priority areas *</label>
+              <textarea id="quote-special-requests" name="specialRequests" required maxLength={2000}
+                value={fields.specialRequests} placeholder="Tell us about rooms to focus on, special requests, or access instructions."
+                onChange={(event) => setFields({ ...fields, specialRequests: event.target.value })}
+                data-testid="textarea-special-requests" />
+            </div>
+            <div className="field">
+              <label htmlFor="quote-preferred-date">Preferred schedule (optional)</label>
+              <input id="quote-preferred-date" name="preferredDate" type="date" value={fields.preferredDate}
+                onChange={(event) => setFields({ ...fields, preferredDate: event.target.value })}
+                data-testid="input-preferred-date" />
+            </div>
+            <fieldset className="choice-group">
+              <legend>Preferred time window (optional)</legend>
+              <div className="choice-options">
+                {TIME_WINDOWS.map((option) => (
+                  <label className="choice-option" key={option.value}>
+                    <input type="checkbox" name="preferredTimeWindows" value={option.value}
+                      checked={fields.preferredTimeWindows.includes(option.value)}
+                      onChange={(event) => setFields({
+                        ...fields,
+                        preferredTimeWindows: event.target.checked
+                          ? [...fields.preferredTimeWindows, option.value]
+                          : fields.preferredTimeWindows.filter((value) => value !== option.value),
+                      })}
+                      data-testid={`checkbox-time-${option.value}`} />
+                    <span>{option.label}</span>
+                  </label>
+                ))}
+              </div>
+            </fieldset>
+            <fieldset className="choice-group">
+              <legend>Cleaning frequency (optional)</legend>
+              <div className="choice-options">
+                {CLEANING_FREQUENCIES.map((option) => (
+                  <label className="choice-option" key={option.value}>
+                    <input type="radio" name="cleaningFrequency" value={option.value}
+                      checked={fields.cleaningFrequency === option.value}
+                      onChange={() => setFields({ ...fields, cleaningFrequency: option.value })}
+                      data-testid={`radio-frequency-${option.value}`} />
+                    <span>{option.label}</span>
+                  </label>
+                ))}
+              </div>
+            </fieldset>
             {error && <p className="form-error" role="alert" data-testid="status-quote-error">{error}</p>}
             <button className="button-primary" type="submit" disabled={createLead.isPending} data-testid="button-submit-quote">
               {createLead.isPending ? 'Sending your request…' : 'Request my quote'} <ArrowRight size={16} />

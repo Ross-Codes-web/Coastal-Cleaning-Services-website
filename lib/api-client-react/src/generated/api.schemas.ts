@@ -17,6 +17,46 @@ export const LeadInputLeadType = {
   checklist: 'checklist',
 } as const;
 
+export type LeadInputServiceType = typeof LeadInputServiceType[keyof typeof LeadInputServiceType];
+
+
+export const LeadInputServiceType = {
+  standard: 'standard',
+  deep_clean: 'deep_clean',
+  move_in_out: 'move_in_out',
+  commercial_office: 'commercial_office',
+  other: 'other',
+} as const;
+
+export type LeadInputPropertySize = typeof LeadInputPropertySize[keyof typeof LeadInputPropertySize];
+
+
+export const LeadInputPropertySize = {
+  '1_bed_1_bath': '1_bed_1_bath',
+  '2_bed_1_2_bath': '2_bed_1_2_bath',
+  '3_bed_3_plus_bath': '3_bed_3_plus_bath',
+  '4_plus_bedrooms': '4_plus_bedrooms',
+} as const;
+
+export type LeadInputPreferredTimeWindowsItem = typeof LeadInputPreferredTimeWindowsItem[keyof typeof LeadInputPreferredTimeWindowsItem];
+
+
+export const LeadInputPreferredTimeWindowsItem = {
+  morning: 'morning',
+  afternoon: 'afternoon',
+  flexible: 'flexible',
+} as const;
+
+export type LeadInputCleaningFrequency = typeof LeadInputCleaningFrequency[keyof typeof LeadInputCleaningFrequency];
+
+
+export const LeadInputCleaningFrequency = {
+  one_time: 'one_time',
+  weekly: 'weekly',
+  bi_weekly: 'bi_weekly',
+  monthly: 'monthly',
+} as const;
+
 export interface LeadInput {
   leadType: LeadInputLeadType;
   /**
@@ -30,6 +70,13 @@ export interface LeadInput {
   phone?: string;
   /** @maxLength 500 */
   serviceAddress?: string;
+  serviceType?: LeadInputServiceType;
+  propertySize?: LeadInputPropertySize;
+  /** @maxLength 2000 */
+  specialRequests?: string;
+  preferredDate?: string;
+  preferredTimeWindows?: LeadInputPreferredTimeWindowsItem[];
+  cleaningFrequency?: LeadInputCleaningFrequency;
 }
 
 export type LeadCreatedLeadType = typeof LeadCreatedLeadType[keyof typeof LeadCreatedLeadType];

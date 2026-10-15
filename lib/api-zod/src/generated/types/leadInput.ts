@@ -5,7 +5,11 @@
  * API specification
  * OpenAPI spec version: 0.1.0
  */
+import type { LeadInputCleaningFrequency } from './leadInputCleaningFrequency';
 import type { LeadInputLeadType } from './leadInputLeadType';
+import type { LeadInputPreferredTimeWindowsItem } from './leadInputPreferredTimeWindowsItem';
+import type { LeadInputPropertySize } from './leadInputPropertySize';
+import type { LeadInputServiceType } from './leadInputServiceType';
 
 export interface LeadInput {
   leadType: LeadInputLeadType;
@@ -20,4 +24,11 @@ export interface LeadInput {
   phone?: string;
   /** @maxLength 500 */
   serviceAddress?: string;
+  serviceType?: LeadInputServiceType;
+  propertySize?: LeadInputPropertySize;
+  /** @maxLength 2000 */
+  specialRequests?: string;
+  preferredDate?: Date;
+  preferredTimeWindows?: LeadInputPreferredTimeWindowsItem[];
+  cleaningFrequency?: LeadInputCleaningFrequency;
 }

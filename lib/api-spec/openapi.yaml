@@ -89,6 +89,26 @@ components:
         serviceAddress:
           type: string
           maxLength: 500
+        serviceType:
+          type: string
+          enum: [standard, deep_clean, move_in_out, commercial_office, other]
+        propertySize:
+          type: string
+          enum: [1_bed_1_bath, 2_bed_1_2_bath, 3_bed_3_plus_bath, 4_plus_bedrooms]
+        specialRequests:
+          type: string
+          maxLength: 2000
+        preferredDate:
+          type: string
+          format: date
+        preferredTimeWindows:
+          type: array
+          items:
+            type: string
+            enum: [morning, afternoon, flexible]
+        cleaningFrequency:
+          type: string
+          enum: [one_time, weekly, bi_weekly, monthly]
     LeadCreated:
       type: object
       required:
